@@ -1,10 +1,45 @@
-
+# ----------------------------
+# Symfony / BackEnd
+# ----------------------------
 ###> symfony/framework-bundle ###
-/.env.local
-/.env.local.php
-/.env.*.local
-/config/secrets/prod/prod.decrypt.private.php
-/public/bundles/
-/var/
-/vendor/
+/BackEnd/.env.local
+/BackEnd/.env.local.php
+/BackEnd/.env.*.local
+/BackEnd/config/secrets/prod/prod.decrypt.private.php
+/BackEnd/public/bundles/
+/BackEnd/var/
+/BackEnd/vendor/
 ###< symfony/framework-bundle ###
+
+###> symfony/webpack-encore-bundle ###
+/BackEnd/node_modules/
+/BackEnd/public/build/
+BackEnd/npm-debug.log
+BackEnd/yarn-error.log
+###< symfony/webpack-encore-bundle ###
+
+###> phpunit/phpunit ###
+/BackEnd/phpunit.xml
+/BackEnd/.phpunit.cache/
+###< phpunit/phpunit ###
+
+# ----------------------------
+# FrontEnd / Vue.js
+# ----------------------------
+/FrontEnd/node_modules/
+/FrontEnd/dist/
+/FrontEnd/.env.local
+/FrontEnd/.env.*.local
+/FrontEnd/npm-debug.log
+/FrontEnd/yarn-error.log
+
+# ----------------------------
+# Global / général
+# ----------------------------
+.DS_Store
+*.log
+*.cache
+.idea/
+.vscode/
+*.bak
+*.swp
