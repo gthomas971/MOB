@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="App\Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/BackEnd/src" isTestSource="false" packagePrefix="App\" />
+      <sourceFolder url="file://$MODULE_DIR$/spec" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/BackEnd/tests" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/BackEnd/tests" isTestSource="true" packagePrefix="App\Tests\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
@@ -174,6 +175,16 @@
       <excludeFolder url="file://$MODULE_DIR$/BackEnd/vendor/symfony/webpack-encore-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/BackEnd/vendor/symfony/yaml" />
       <excludeFolder url="file://$MODULE_DIR$/BackEnd/vendor/theseer/tokenizer" />
+      <excludeFolder url="file://$MODULE_DIR$/BackEnd/vendor/phpdocumentor/reflection-common" />
+      <excludeFolder url="file://$MODULE_DIR$/BackEnd/vendor/phpdocumentor/reflection-docblock" />
+      <excludeFolder url="file://$MODULE_DIR$/BackEnd/vendor/phpdocumentor/type-resolver" />
+      <excludeFolder url="file://$MODULE_DIR$/BackEnd/vendor/phpstan/phpdoc-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/BackEnd/vendor/symfony/property-access" />
+      <excludeFolder url="file://$MODULE_DIR$/BackEnd/vendor/symfony/property-info" />
+      <excludeFolder url="file://$MODULE_DIR$/BackEnd/vendor/symfony/serializer" />
+      <excludeFolder url="file://$MODULE_DIR$/BackEnd/vendor/symfony/type-info" />
+      <excludeFolder url="file://$MODULE_DIR$/BackEnd/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/BackEnd/vendor/nelmio/cors-bundle" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
