@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref,  watch, defineProps, defineEmits ,onMounted, onBeforeUnmount } from "vue";
+import { ref, watch, onMounted, onBeforeUnmount } from "vue";
 import type { Station } from '@/stores/useStation.ts';
 
 

@@ -16,9 +16,9 @@ import { useStationStore } from '@/stores/useStation.ts';
 import TrainSvg from '@assets/svgs/train.svg'
 
 const stationStore = useStationStore();
-</script>
+</script >
 
-<style>
+<style scoped>
 .loader {
   position: fixed;
   top: 0; left: 0;
