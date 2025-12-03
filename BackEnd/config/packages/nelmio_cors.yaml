@@ -1,10 +1,15 @@
+# config/packages/nelmio_cors.yaml
+
 nelmio_cors:
     defaults:
-        origin_regex: true
-        allow_origin: ['%env(CORS_ALLOW_ORIGIN)%']
-        allow_methods: ['GET', 'OPTIONS', 'POST', 'PUT', 'PATCH', 'DELETE']
-        allow_headers: ['Content-Type', 'Authorization']
-        expose_headers: ['Link']
-        max_age: 3600
+    # Laisser cette option sur 'null' pour la gestion par défaut,
+    # ou utiliser les chemins ci-dessous pour une configuration précise.
+    # Si vous utilisez des chemins précis, vous n'avez pas besoin de la section 'defaults'.
+
     paths:
-        '^/': null
+        '^/':
+            allow_origin: ['https://app.localhost']
+            allow_headers: ['Content-Type', 'Authorization']
+            allow_methods: ['GET', 'OPTIONS', 'POST', 'PUT', 'PATCH', 'DELETE']
+            allow_credentials: true
+            max_age: 3600

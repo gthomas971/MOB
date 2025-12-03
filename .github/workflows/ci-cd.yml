@@ -1,0 +1,66 @@
+name: Symfony + Vue CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    services:
+      db:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: symfony
+          POSTGRES_PASSWORD: symfony
+          POSTGRES_DB: symfony
+        ports:
+          - 5454:5432
+        options: >-
+          --health-cmd "pg_isready -U symfony"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # Build PHP container
+      - name: Build PHP container
+        run: docker build -t myapp-php ./docker/php
+
+      # Composer install + lint + tests
+      - name: Run Symfony tests
+        run: |
+          docker run --rm \
+            -v ${{ github.workspace }}/BackEnd:/var/www/html \
+            --network host \
+            myapp-php sh -c "composer install --no-interaction && vendor/bin/phpunit --coverage-text && vendor/bin/phpstan analyse src"
+
+      # Node.js frontend
+      - name: Build frontend
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - run: |
+          cd FrontEnd
+          npm ci
+          npm run build
+
+      # Build Docker image for Symfony app
+      - name: Build Symfony Docker image
+        run: docker build -t myrepo/symfony-app:${{ github.sha }} ./BackEnd
+
+      # Push Docker image
+      - name: Push Docker image
+        run: |
+          echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+          docker tag myrepo/symfony-app:${{ github.sha }} myrepo/symfony-app:latest
+          docker push myrepo/symfony-app:latest
+
+      # Optional: deploy via SSH
+      - name: Deploy to server
+        run: ssh user@server "cd /path/to/project && docker-compose pull php && docker-compose up -d php nginx"

@@ -9,21 +9,23 @@
         "php": ">=8.2",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "doctrine/doctrine-bundle": "^3.0",
+        "doctrine/doctrine-bundle": "^3.1",
         "doctrine/doctrine-migrations-bundle": "^3.7",
-        "doctrine/orm": "^3.5",
+        "doctrine/orm": "^3.5.8",
+        "firebase/php-jwt": "^6.11",
         "nelmio/cors-bundle": "^2.6",
-        "phpdocumentor/reflection-docblock": "^5.6",
+        "phpdocumentor/reflection-docblock": "^5.6.5",
         "phpstan/phpdoc-parser": "^2.3",
         "symfony/console": "7.3.*",
         "symfony/dotenv": "7.3.*",
-        "symfony/flex": "^2",
+        "symfony/flex": "^2.10",
         "symfony/framework-bundle": "7.3.*",
         "symfony/property-access": "7.3.*",
         "symfony/property-info": "7.3.*",
         "symfony/runtime": "7.3.*",
+        "symfony/security-bundle": "7.3.*",
         "symfony/serializer": "7.3.*",
-        "symfony/webpack-encore-bundle": "^2.3",
+        "symfony/webpack-encore-bundle": "^2.4",
         "symfony/yaml": "7.3.*"
     },
     "config": {
@@ -78,9 +80,9 @@
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^4.3",
-        "phpunit/phpunit": "^12.4",
+        "phpunit/phpunit": "^12.4.5",
         "symfony/browser-kit": "7.3.*",
         "symfony/css-selector": "7.3.*",
-        "symfony/maker-bundle": "^1.64"
+        "symfony/maker-bundle": "^1.65.1"
     }
 }

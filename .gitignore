@@ -43,3 +43,4 @@ BackEnd/yarn-error.log
 .vscode/
 *.bak
 *.swp
+acme.json

@@ -2,7 +2,7 @@
 
 namespace App\Tests\Service;
 
-use App\Service\RouteCalculator;
+use App\Service\RouteCalculatorService;
 use PHPUnit\Framework\TestCase;
 use App\Entity\Distance;
 use App\Entity\Station;
@@ -36,7 +36,7 @@ class RouteCalculatorServiceTest extends TestCase
 
         $distances = [$d1, $d2, $d3];
 
-        $service = new RouteCalculator();
+        $service = new RouteCalculatorService();
         $graph = $service->buildGraph($distances);
 
 
@@ -57,7 +57,7 @@ class RouteCalculatorServiceTest extends TestCase
             'C' => ['B' => 1]
         ];
 
-        $service = new RouteCalculator();
+        $service = new RouteCalculatorService();
 
         $result = $service->shortestPath($graph, 'A', 'B');
 

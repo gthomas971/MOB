@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\DistanceRepository;
-use App\Service\RouteCalculator;
+use App\Service\RouteCalculatorService;
 
 final class RoutesController extends AbstractController
 {
@@ -15,7 +15,7 @@ final class RoutesController extends AbstractController
     public function index(
         Request $request,
         DistanceRepository $distanceRepo,
-        RouteCalculator $routeCalculator
+        RouteCalculatorService $routeCalculator
     ): JsonResponse {
         $start = $request->query->get('start');
         $end = $request->query->get('end');

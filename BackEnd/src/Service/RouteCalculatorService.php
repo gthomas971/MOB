@@ -2,7 +2,7 @@
 
 namespace App\Service;
 
-class RouteCalculator
+class RouteCalculatorService
 {
     public function buildGraph(array $distances): array
     {
