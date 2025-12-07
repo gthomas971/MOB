@@ -18,7 +18,11 @@ class AuthController extends AbstractController
 
         $user = $users->findOneBy(['email' => $data['email']]);
         if (!$user || !password_verify($data['password'], $user->getPassword())) {
-            return new JsonResponse(['message' => 'Invalid credentials'], 401);
+            return new JsonResponse([
+                'code' => 'INVALID_CREDENTIALS',
+                'message' => 'Invalid credentials',
+                'details' =>   ['Identifiants fournis incorrects'],
+            ], 401);
         }
 
         return new JsonResponse([

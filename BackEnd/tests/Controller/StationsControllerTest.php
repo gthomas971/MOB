@@ -2,14 +2,14 @@
 
 namespace App\Tests\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use App\Tests\AuthTest;
 
-final class StationsControllerTest extends WebTestCase
+final class StationsControllerTest extends AuthTest
 {
     public function testIndex(): void
     {
-        $client = static::createClient();
-        $client->request('GET', '/station');
+        $client = $this->createAuthenticatedClient();
+        $client->request('GET', '/api/v1/stations');
 
         self::assertResponseIsSuccessful();
     }

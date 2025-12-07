@@ -2,17 +2,20 @@
 
 namespace App\Tests\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use App\Tests\AuthTest;
 
-final class RoutesControllerTest extends WebTestCase
+final class RoutesControllerTest extends AuthTest
 {
     public function testIndex(): void
     {
-        $client = static::createClient();
-        $client->request('GET', '/routes', [
-            'start' => 'MX',
-            'end' => 'CABY'
-        ]);
+        $client = $this->createAuthenticatedClient();
+        $client->request('POST', '/api/v1/routes', [], [], ['CONTENT_TYPE' => 'application/json'],
+            json_encode([
+                'fromStationId' => 'MX',
+                'toStationId' => 'CABY',
+                'analyticCode' => 'passager'
+            ])
+        );
 
         self::assertResponseIsSuccessful();
 
@@ -20,7 +23,7 @@ final class RoutesControllerTest extends WebTestCase
 
         self::assertArrayHasKey('path', $responseData);
         self::assertArrayHasKey('segments', $responseData);
-        self::assertArrayHasKey('totalDistance', $responseData);
+        self::assertArrayHasKey('distanceKm', $responseData);
 
         self::assertNotEmpty($responseData['segments']);
     }

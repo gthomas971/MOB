@@ -21,6 +21,57 @@ tags:
       description: Statistiques de distances par code analytique
 
 paths:
+
+    /login:
+        post:
+            tags: [ Auth ]
+            description: récupération du token
+            operationId: login
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            type: object
+                            properties:
+                                email:
+                                    type: string
+                                    format: email
+                                password:
+                                    type: string
+                            required: [ email, password ]
+            responses:
+                '200':
+                    description: Successful login
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                properties:
+                                    token:
+                                        type: string
+                                required: [ token ]
+                '401':
+                    description: Invalid credentials
+    /stations:
+        get:
+            tags: [ Stations ]
+            description: Récupérer toutes les stations
+            operationId: getStations
+            responses:
+                '200':
+                    description: Stations
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/stations'
+                '400':
+                    description: Paramètres invalides (ex. from > to)
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+
     /routes:
         post:
             tags: [Routing]
@@ -199,6 +250,25 @@ components:
                     items:
                         $ref: '#/components/schemas/AnalyticDistance'
             required: [items]
+
+        stations:
+            type: object
+            properties:
+                success:
+                    type: boolean
+                data:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                            id:
+                                type: integer
+                            short_name:
+                                type: string
+                            long_name:
+                                type: string
+                        required: [ id, short_name, long_name ]
+            required: [ success, data ]
 
         Error:
             type: object

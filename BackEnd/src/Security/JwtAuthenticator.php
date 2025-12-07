@@ -42,7 +42,11 @@ class JwtAuthenticator extends AbstractAuthenticator
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?JsonResponse
     {
-        return new JsonResponse(['message' => $exception->getMessage()], 401);
+        return new JsonResponse([
+            'code' => 'INVALID_TOKEN',
+            'message' => 'Invalid token',
+            'details' => [$exception->getMessage()]
+        ], 401);
     }
 
     public function onAuthenticationSuccess(Request $request, $token, string $firewallName): ?JsonResponse
