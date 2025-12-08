@@ -2,9 +2,9 @@
 
 namespace App\Tests\Controller;
 
-use App\Tests\AuthTest;
+use App\Tests\AuthControllerTest;
 
-final class StationsControllerTest extends AuthTest
+final class StationsControllerControllerTest extends AuthControllerTest
 {
     public function testIndex(): void
     {
