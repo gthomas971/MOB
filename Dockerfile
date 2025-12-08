@@ -26,6 +26,14 @@ RUN echo "zend_extension=xdebug.so" > /usr/local/etc/php/conf.d/xdebug.ini \
 # Définition du répertoire de travail
 WORKDIR /var/www/html
 
+COPY ./BackEnd/ /var/www/html/
+
+# Installer Composer si ce n'est pas déjà fait
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Installer les dépendances PHP
+RUN php -d xdebug.mode=off /usr/local/bin/composer install --no-interaction --optimize-autoloader
+
 
 # Copier le script d'entrypoint
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
