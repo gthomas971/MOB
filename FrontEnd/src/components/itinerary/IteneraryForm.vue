@@ -33,12 +33,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, defineProps, defineEmits } from "vue";
-import InputAutocomplete from "@/components/InputSearch.vue";
-import LoaderButton from "@/components/LoaderButton.vue";
-import InversionSvg from "@/assets/svgs/double_direction_arrows.svg";
+import { ref, watch} from "vue";
+import InputAutocomplete from "@/components/form/InputSearch.vue";
+import LoaderButton from "@/components/form/LoaderButton.vue";
+import InversionSvg from "@assets/svgs/double_direction_arrows.svg";
 
-import type { Station } from "@/stores/useStation.ts";
+import type { Station } from "@/stores/useStation.js";
 
 const props = defineProps<{
   stations: Station[];

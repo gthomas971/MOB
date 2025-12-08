@@ -17,7 +17,7 @@
         />
         <section class="section-iti" v-else key="itinerary">
           <ItineraryHeader @back="backToSearch" />
-          <Itinerary :total-distance="routeData.totalDistance" :segments="routeData.segments" />
+          <Itinerary :total-distance="routeData.distanceKm" :segments="routeData.segments" />
         </section>
       </Transition>
 
@@ -29,11 +29,11 @@
 <script setup lang="ts">
 import TrainImage from '@assets/images/img.png';
 import { ApiService } from '@/services/Api.ts';
-import Itinerary from "@/components/Itinerary.vue";
+import Itinerary from "@/components/itinerary/Itinerary.vue";
 import {computed, ref} from "vue";
 import { useStationStore, type Station } from '@/stores/useStation.ts';
-import ItineraryHeader from "@/components/ItineraryHeader.vue";
-import SearchForm from '@/components/SearchForm.vue'
+import ItineraryHeader from "@/components/itinerary/ItineraryHeader.vue";
+import SearchForm from '@/components/itinerary/IteneraryForm.vue'
 
 const stationStore = useStationStore();
 
@@ -47,7 +47,7 @@ const showItinerary = ref(false);
 const loadingSearch = ref(false);
 const routeData = ref({
   segments: [],
-  totalDistance: 0
+  distanceKm: 0
 });
 
 function inversion(){
@@ -112,8 +112,9 @@ function backToSearch() {
 div.main {
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100vh ;
   overflow: hidden;
+  padding-top: 100px;
 }
 
 h1{

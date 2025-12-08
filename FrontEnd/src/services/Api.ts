@@ -24,9 +24,21 @@ export const ApiService = {
         return api.get('/stations')
     },
 
-    async getRoute(start: string, end: string) {
-        return api.get('/routes', {
-            params: { start, end }
+    async getRoute(fromStationId: string, toStationId: string) {
+        return api.post('/routes', {
+            fromStationId,
+            toStationId,
+            analyticCode: 'passager'
+        })
+    },
+
+    async getStats(from: string, to: string) {
+        return api.get('/stats/distances', {
+            params: {
+                from,
+                to,
+                groupBy: 'none'
+            }
         })
     },
 }

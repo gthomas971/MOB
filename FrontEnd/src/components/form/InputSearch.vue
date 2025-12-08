@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
 import { ref, watch, onMounted, onBeforeUnmount } from "vue";
-import type { Station } from '@/stores/useStation.ts';
+import type { Station } from '@/stores/useStation.js';
 
 
 const props = defineProps<{

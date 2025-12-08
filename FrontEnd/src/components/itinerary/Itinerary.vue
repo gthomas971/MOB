@@ -24,7 +24,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
 
 interface Segment {
   from: string;
@@ -32,7 +31,7 @@ interface Segment {
   distance: number;
 }
 
-const props = defineProps<{
+defineProps<{
   segments: Segment[];
   totalDistance: number;
 }>();
