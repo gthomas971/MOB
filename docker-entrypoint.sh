@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+echo ">>> Install composer dependencies"
+composer install --no-interaction
+
 echo ">>> Création des bases de données"
 php bin/console doctrine:database:create --if-not-exists
 php bin/console doctrine:database:create --env=test --if-not-exists
