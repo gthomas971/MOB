@@ -39,6 +39,22 @@
         </deprecationTrigger>
     </source>
 
+    <coverage
+        includeUncoveredFiles="true"
+        pathCoverage="false"
+        ignoreDeprecatedCodeUnits="true"
+        disableCodeCoverageIgnore="true"
+    >
+        <report>
+            <html outputDirectory="var/coverage/html" lowUpperBound="50" highLowerBound="90"/>
+            <text outputFile="var/coverage/coverage.txt" showUncoveredFiles="true" showOnlySummary="false"/>
+            <clover outputFile="var/coverage/clover.xml"/>
+            <php outputFile="var/coverage/coverage.php"/>
+            <xml outputDirectory="var/coverage/xml"/>
+        </report>
+    </coverage>
+
+
     <extensions>
     </extensions>
 </phpunit>

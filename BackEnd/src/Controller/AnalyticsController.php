@@ -19,6 +19,12 @@ class AnalyticsController extends AbstractController
         $toRaw = $request->query->get('to');
         $groupByRaw = $request->query->get('groupBy');
 
+        if (!$fromRaw || !$toRaw) {
+            $fullRange = $tripRepository->getAvailablePeriod();
+            $fromRaw = $fromRaw ?? $fullRange['from']->format('Y-m-d');
+            $toRaw   = $toRaw   ?? $fullRange['to']->format('Y-m-d');
+        }
+
         $validation = $validator->validate($fromRaw, $toRaw, $groupByRaw);
 
         if (!empty($validation['errors'])) {
@@ -32,7 +38,7 @@ class AnalyticsController extends AbstractController
         $results = $tripRepository->getDistances($fromDate, $toDate, $groupBy);
 
         $responseItems = array_map(function($r) use ($groupBy, $fromDate, $toDate) {
-            $periodStart = new \DateTimeImmutable($r['periodStart']);
+            $periodStart = isset($r['periodStart']) ? new \DateTimeImmutable($r['periodStart']) : $fromDate;
             switch ($groupBy) {
                 case 'day':
                     $periodEnd = $periodStart;

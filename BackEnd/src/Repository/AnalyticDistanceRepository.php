@@ -56,4 +56,19 @@ class AnalyticDistanceRepository extends ServiceEntityRepository
 
         return $qb->getQuery()->getArrayResult();
     }
+
+    public function getAvailablePeriod(): array
+    {
+        $qb = $this->createQueryBuilder('a')
+            ->select('MIN(a.date) as minDate, MAX(a.date) as maxDate');
+
+        $result = $qb->getQuery()->getSingleResult();
+
+        return [
+            'from' => new \DateTimeImmutable($result['minDate']),
+            'to'   => new \DateTimeImmutable($result['maxDate']),
+        ];
+    }
+
+
 }

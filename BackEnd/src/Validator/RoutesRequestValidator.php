@@ -13,12 +13,21 @@ class RoutesRequestValidator
     /**
      * Valide les données d'une requête /routes
      *
-     * @param array $data
+     * @param array|null $data
      * @return array Tableau d'erreurs, vide si tout est OK
      */
-    public function validate(array $data): array
+    public function validate(null|array $data): array
     {
         $errors = [];
+
+        if ($data === null) {
+            $errors[] = [
+                'code' => 'INVALID_JSON',
+                'message' => 'Corps JSON invalide.',
+                'details' => [],
+            ];
+            return $errors;
+        }
 
         $fromStationId = $data['fromStationId'] ?? null;
         $toStationId = $data['toStationId'] ?? null;
