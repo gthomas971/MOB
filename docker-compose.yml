@@ -39,6 +39,7 @@ services:
         container_name: symfony_php
         volumes:
             - ./BackEnd:/var/www/html
+        command: bash -c "composer install && php-fpm"
         depends_on:
             - db
         environment:
