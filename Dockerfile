@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     libicu-dev \
     zlib1g-dev \
+    dos2unix \
     && docker-php-ext-install pdo pdo_pgsql opcache zip intl \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug \
@@ -34,7 +35,10 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 
 # Copier le script d'entrypoint
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+# Convertir le script en format UNIX et le rendre exécutable
+RUN dos2unix /usr/local/bin/docker-entrypoint.sh \
+    && chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # Définir l’entrypoint
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
