@@ -16,4 +16,5 @@ echo ">>> Chargement des fixtures"
 php bin/console doctrine:fixtures:load --no-interaction
 php bin/console doctrine:fixtures:load --env=test --no-interaction
 
+
 exec "$@"
